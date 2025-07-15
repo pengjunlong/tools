@@ -99,7 +99,7 @@ export class NumbersTool extends ToolBase {
         }
 
         // 用逗号连接所有数字
-        this.output.value = numbers.join(', ');
+        this.output.value = numbers.join(',');
         this.manager.showNotification('转换成功');
     }
 
