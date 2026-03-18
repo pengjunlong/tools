@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模块化工具平台</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1><i class="fas fa-tools"></i> 模块化工具平台</h1>
+        <p>可扩展的在线工具集合，按需加载功能模块</p>
+    </header>
+
+    <nav class="tool-nav" id="toolNav">
+        <!-- 工具导航将由JavaScript动态生成 -->
+    </nav>
+
+    <main class="tool-container" id="toolContainer">
+        <!-- 工具内容将由JavaScript动态加载 -->
+        <div class="loading-placeholder">
+            <h2 class="tool-title"><i class="fas fa-spinner fa-spin"></i> 加载中...</h2>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2023 模块化工具平台 | 使用HTML/CSS/JavaScript构建 | 设计遵循模块化原则</p>
+    </footer>
+</div>
+
+<div class="notification" id="notification">
+    <i class="fas fa-check-circle"></i>
+    <span>已复制到剪贴板！</span>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
