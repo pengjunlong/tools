@@ -1,5 +1,5 @@
 ---
-layout: single-tool
+layout: single
 title: "二维码生成"
 permalink: /tools/qrcode/
 author_profile: false

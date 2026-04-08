@@ -1,5 +1,5 @@
 ---
-layout: single-tool
+layout: single
 title: "Base64 编码工具"
 permalink: /tools/base64/
 author_profile: false

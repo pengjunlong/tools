@@ -1,5 +1,5 @@
 ---
-layout: single-tool
+layout: single
 title: "大小写转换"
 permalink: /tools/case-convert/
 author_profile: false

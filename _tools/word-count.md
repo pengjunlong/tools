@@ -1,5 +1,5 @@
 ---
-layout: single-tool
+layout: single
 title: "字数统计"
 permalink: /tools/word-count/
 author_profile: false

@@ -1,5 +1,5 @@
 ---
-layout: single-tool
+layout: single
 title: "正则表达式测试"
 permalink: /tools/regex/
 author_profile: false

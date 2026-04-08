@@ -1,5 +1,5 @@
 ---
-layout: single-tool
+layout: single
 title: "时间戳转换工具"
 permalink: /tools/timestamp/
 author_profile: false

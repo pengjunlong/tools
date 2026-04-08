@@ -1,5 +1,5 @@
 ---
-layout: single-tool
+layout: single
 title: "颜色转换"
 permalink: /tools/color/
 author_profile: false

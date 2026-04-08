@@ -1,5 +1,5 @@
 ---
-layout: single-tool
+layout: single
 title: "Hash 计算"
 permalink: /tools/hash/
 author_profile: false

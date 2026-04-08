@@ -1,5 +1,5 @@
 ---
-layout: single-tool
+layout: single
 title: "文本对比"
 permalink: /tools/text-diff/
 author_profile: false

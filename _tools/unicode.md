@@ -1,5 +1,5 @@
 ---
-layout: single-tool
+layout: single
 title: "Unicode 转换"
 permalink: /tools/unicode/
 author_profile: false

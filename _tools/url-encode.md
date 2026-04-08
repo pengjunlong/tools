@@ -1,5 +1,5 @@
 ---
-layout: single-tool
+layout: single
 title: "URL 编解码"
 permalink: /tools/url-encode/
 author_profile: false

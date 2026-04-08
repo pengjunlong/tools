@@ -1,5 +1,5 @@
 ---
-layout: single-tool
+layout: single
 title: "文本去重"
 permalink: /tools/text-dedup/
 author_profile: false

@@ -1,5 +1,5 @@
 ---
-layout: single-tool
+layout: single
 title: "数字转换工具"
 permalink: /tools/numbers/
 author_profile: false

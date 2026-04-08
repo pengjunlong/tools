@@ -1,5 +1,5 @@
 ---
-layout: single-tool
+layout: single
 title: "JSON 格式化工具"
 permalink: /tools/json/
 author_profile: false
