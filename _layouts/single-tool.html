@@ -1,0 +1,29 @@
+---
+---
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}" class="no-js">
+  <head>
+    {% include head.html %}
+    <link rel="stylesheet" href="/assets/css/tools.css">
+  </head>
+  <body class="layout--single">
+
+    {% include skip-links.html %}
+    {% include browser-upgrade.html %}
+    {% include masthead.html %}
+    <div class="initial-content">
+      {{ content }}
+    </div>
+    <div id="footer" class="page__footer">
+      <footer>
+        {% include footer/custom.html %}
+        {% include footer.html %}
+      </footer>
+    </div>
+    {% include scripts.html %}
+    {% if page.tool_js %}
+    <script src="{{ page.tool_js | relative_url }}"></script>
+    {% endif %}
+  </body>
+</html>
+

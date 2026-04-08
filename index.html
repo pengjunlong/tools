@@ -1,40 +1,106 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>模块化工具平台</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<div class="container">
-    <header>
-        <h1><i class="fas fa-tools"></i> 模块化工具平台</h1>
-        <p>可扩展的在线工具集合，按需加载功能模块</p>
-    </header>
+---
+layout: home
+title: "工具集"
+excerpt: "可扩展的在线工具集合"
+author_profile: false
+header:
+  overlay_color: "#2c3e50"
+  actions:
+    - label: "浏览工具"
+      url: "#工具列表"
+---
 
-    <nav class="tool-nav" id="toolNav">
-        <!-- 工具导航将由JavaScript动态生成 -->
-    </nav>
+<section id="工具列表">
 
-    <main class="tool-container" id="toolContainer">
-        <!-- 工具内容将由JavaScript动态加载 -->
-        <div class="loading-placeholder">
-            <h2 class="tool-title"><i class="fas fa-spinner fa-spin"></i> 加载中...</h2>
-        </div>
-    </main>
+  <!-- 文本处理 -->
+  <div class="category-section">
+    <h3 class="category-title cat-text"><i class="fas fa-font"></i> 文本处理</h3>
+    <div class="tool-grid">
+      <a class="tool-grid-item" href="/tools/text-diff/">
+        <div class="tool-grid-icon icon-text"><i class="fas fa-columns"></i></div>
+        <div class="tool-grid-info"><h4>文本对比</h4><p>对比两段文本差异，高亮增删行</p></div>
+      </a>
+      <a class="tool-grid-item" href="/tools/word-count/">
+        <div class="tool-grid-icon icon-text"><i class="fas fa-calculator"></i></div>
+        <div class="tool-grid-info"><h4>字数统计</h4><p>统计字符、单词、行数、段落数</p></div>
+      </a>
+      <a class="tool-grid-item" href="/tools/case-convert/">
+        <div class="tool-grid-icon icon-text"><i class="fas fa-text-height"></i></div>
+        <div class="tool-grid-info"><h4>大小写转换</h4><p>首字母大写、驼峰、下划线等互转</p></div>
+      </a>
+      <a class="tool-grid-item" href="/tools/text-dedup/">
+        <div class="tool-grid-icon icon-text"><i class="fas fa-filter"></i></div>
+        <div class="tool-grid-info"><h4>文本去重</h4><p>按行去重，保留首次出现</p></div>
+      </a>
+    </div>
+  </div>
 
-    <footer>
-        <p>© 2023 模块化工具平台 | 使用HTML/CSS/JavaScript构建 | 设计遵循模块化原则</p>
-    </footer>
-</div>
+  <!-- 编码加密 -->
+  <div class="category-section">
+    <h3 class="category-title cat-encode"><i class="fas fa-code"></i> 编码 / 加密</h3>
+    <div class="tool-grid">
+      <a class="tool-grid-item" href="/tools/json/">
+        <div class="tool-grid-icon icon-encode"><i class="fas fa-brackets-curly"></i></div>
+        <div class="tool-grid-info"><h4>JSON 格式化</h4><p>格式化、压缩、验证，树状视图和路径查询</p></div>
+      </a>
+      <a class="tool-grid-item" href="/tools/base64/">
+        <div class="tool-grid-icon icon-encode"><i class="fas fa-lock"></i></div>
+        <div class="tool-grid-info"><h4>Base64 编解码</h4><p>UTF-8 中文支持，URL 安全模式</p></div>
+      </a>
+      <a class="tool-grid-item" href="/tools/url-encode/">
+        <div class="tool-grid-icon icon-encode"><i class="fas fa-link"></i></div>
+        <div class="tool-grid-info"><h4>URL 编解码</h4><p>URL encode / decode，处理查询参数</p></div>
+      </a>
+      <a class="tool-grid-item" href="/tools/unicode/">
+        <div class="tool-grid-icon icon-encode"><i class="fas fa-globe"></i></div>
+        <div class="tool-grid-info"><h4>Unicode 转换</h4><p>Unicode 码点与字符互转</p></div>
+      </a>
+      <a class="tool-grid-item" href="/tools/hash/">
+        <div class="tool-grid-icon icon-encode"><i class="fas fa-fingerprint"></i></div>
+        <div class="tool-grid-info"><h4>Hash 计算</h4><p>MD5 / SHA-1 / SHA-256 哈希值计算</p></div>
+      </a>
+    </div>
+  </div>
 
-<div class="notification" id="notification">
-    <i class="fas fa-check-circle"></i>
-    <span>已复制到剪贴板！</span>
-</div>
+  <!-- 格式化 -->
+  <div class="category-section">
+    <h3 class="category-title cat-format"><i class="fas fa-magic"></i> 格式化 / 匹配</h3>
+    <div class="tool-grid">
+      <a class="tool-grid-item" href="/tools/regex/">
+        <div class="tool-grid-icon icon-format"><i class="fas fa-asterisk"></i></div>
+        <div class="tool-grid-info"><h4>正则表达式测试</h4><p>实时匹配高亮，支持分组捕获</p></div>
+      </a>
+    </div>
+  </div>
 
-<script type="module" src="js/main.js"></script>
-</body>
-</html>
+  <!-- 可视化 -->
+  <div class="category-section">
+    <h3 class="category-title cat-visual"><i class="fas fa-palette"></i> 可视化</h3>
+    <div class="tool-grid">
+      <a class="tool-grid-item" href="/tools/qrcode/">
+        <div class="tool-grid-icon icon-visual"><i class="fas fa-qrcode"></i></div>
+        <div class="tool-grid-info"><h4>二维码生成</h4><p>输入文本或 URL 生成二维码图片</p></div>
+      </a>
+      <a class="tool-grid-item" href="/tools/color/">
+        <div class="tool-grid-icon icon-visual"><i class="fas fa-eye-dropper"></i></div>
+        <div class="tool-grid-info"><h4>颜色转换</h4><p>HEX / RGB / HSL 互转，取色器</p></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 开发辅助 -->
+  <div class="category-section">
+    <h3 class="category-title cat-text"><i class="fas fa-terminal"></i> 开发辅助</h3>
+    <div class="tool-grid">
+      <a class="tool-grid-item" href="/tools/numbers/">
+        <div class="tool-grid-icon icon-text"><i class="fas fa-list-ol"></i></div>
+        <div class="tool-grid-info"><h4>数字转换</h4><p>多格式数字转换，去重、排序和统计</p></div>
+      </a>
+      <a class="tool-grid-item" href="/tools/timestamp/">
+        <div class="tool-grid-icon icon-text"><i class="fas fa-clock"></i></div>
+        <div class="tool-grid-info"><h4>时间戳转换</h4><p>秒/毫秒级时间戳互转，实时时钟</p></div>
+      </a>
+    </div>
+  </div>
+
+</section>
