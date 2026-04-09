@@ -7,8 +7,6 @@ sidebar:
   nav: "tools"
 ---
 
-<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
-
 <div id="qrcodeApp">
   <div class="tool-notice">
     <h4><i class="fas fa-info-circle"></i>使用说明</h4>
