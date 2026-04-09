@@ -19,9 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() { notification.classList.remove('show'); }, 3000);
   }
 
-  // Error correction level mapping
-  var eclMap = { L: 1, M: 0, Q: 3, H: 2 };
-
   // Convert string to UTF-8 byte string for qrcode-generator
   function toUTF8ByteString(str) {
     var encoder = new TextEncoder();
@@ -37,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof qrcode === 'undefined') {
       throw new Error('QR 库未加载，请检查网络');
     }
-    var ecl = eclMap[eclLevel] !== undefined ? eclMap[eclLevel] : 0;
-    var qr = qrcode(0, ecl);
+    // qrcode-generator accepts string: 'L', 'M', 'Q', 'H'
+    var qr = qrcode(0, eclLevel);
     qr.addData(toUTF8ByteString(text), 'Byte');
     qr.make();
 
