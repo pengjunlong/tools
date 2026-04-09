@@ -22,10 +22,24 @@ document.addEventListener('DOMContentLoaded', function() {
   // Error correction level mapping
   var eclMap = { L: 1, M: 0, Q: 3, H: 2 };
 
+  // Convert string to UTF-8 byte string for qrcode-generator
+  function toUTF8ByteString(str) {
+    var encoder = new TextEncoder();
+    var bytes = encoder.encode(str);
+    var result = '';
+    for (var i = 0; i < bytes.length; i++) {
+      result += String.fromCharCode(bytes[i]);
+    }
+    return result;
+  }
+
   function generateQR(text, displaySize, eclLevel, fg, bg) {
+    if (typeof qrcode === 'undefined') {
+      throw new Error('QR 库未加载，请检查网络');
+    }
     var ecl = eclMap[eclLevel] !== undefined ? eclMap[eclLevel] : 0;
     var qr = qrcode(0, ecl);
-    qr.addData(text);
+    qr.addData(toUTF8ByteString(text), 'Byte');
     qr.make();
 
     var moduleCount = qr.getModuleCount();
