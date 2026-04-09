@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   var input = document.getElementById('qrInput');
   var sizeSelect = document.getElementById('qrSize');
+  var eclSelect = document.getElementById('qrEcl');
   var fgColor = document.getElementById('qrFgColor');
   var bgColor = document.getElementById('qrBgColor');
   var generateBtn = document.getElementById('generateBtn');
@@ -18,49 +19,60 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() { notification.classList.remove('show'); }, 3000);
   }
 
-  // Simple QR Code generator (no external dependency)
-  // Using a compact QR code implementation
-  function generateQR(text, size, fg, bg) {
-    // We'll use the QR Code API as a simple image approach since
-    // implementing a full QR encoder in vanilla JS is too large
-    var img = new Image();
-    img.crossOrigin = 'anonymous';
-    var url = 'https://api.qrserver.com/v1/create-qr-code/?size=' + size + 'x' + size +
-              '&data=' + encodeURIComponent(text) +
-              '&color=' + fg.replace('#', '') +
-              '&bgcolor=' + bg.replace('#', '') +
-              '&margin=8';
-    img.onload = function() {
-      canvas.width = size;
-      canvas.height = size;
-      var ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0);
-      downloadBtn.disabled = false;
-    };
-    img.onerror = function() {
-      // Fallback: draw text as placeholder
-      canvas.width = size;
-      canvas.height = size;
-      var ctx = canvas.getContext('2d');
-      ctx.fillStyle = bg;
-      ctx.fillRect(0, 0, size, size);
-      ctx.fillStyle = fg;
-      ctx.font = '14px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('二维码生成失败', size/2, size/2);
-      ctx.fillText('请检查网络连接', size/2, size/2 + 20);
-      downloadBtn.disabled = true;
-    };
-    img.src = url;
+  // Error correction level mapping
+  var eclMap = { L: 1, M: 0, Q: 3, H: 2 };
+
+  function generateQR(text, displaySize, eclLevel, fg, bg) {
+    var ecl = eclMap[eclLevel] !== undefined ? eclMap[eclLevel] : 0;
+    var qr = qrcode(0, ecl);
+    qr.addData(text);
+    qr.make();
+
+    var moduleCount = qr.getModuleCount();
+    var margin = 4;
+    var totalModules = moduleCount + margin * 2;
+    var cellSize = displaySize / totalModules;
+
+    canvas.width = displaySize;
+    canvas.height = displaySize;
+    var ctx = canvas.getContext('2d');
+
+    // Background
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, displaySize, displaySize);
+
+    // Modules
+    ctx.fillStyle = fg;
+    for (var row = 0; row < moduleCount; row++) {
+      for (var col = 0; col < moduleCount; col++) {
+        if (qr.isDark(row, col)) {
+          ctx.fillRect(
+            Math.round((col + margin) * cellSize),
+            Math.round((row + margin) * cellSize),
+            Math.ceil(cellSize),
+            Math.ceil(cellSize)
+          );
+        }
+      }
+    }
   }
 
   function doGenerate() {
     var text = input.value.trim();
-    if (!text) { showNotification('请输入内容', 'error'); return; }
-    var size = parseInt(sizeSelect.value) || 256;
-    generateQR(text, size, fgColor.value, bgColor.value);
-    qrOutput.style.display = '';
-    showNotification('二维码已生成');
+    if (!text) {
+      showNotification('请输入内容', 'error');
+      return;
+    }
+    try {
+      var size = parseInt(sizeSelect.value) || 256;
+      generateQR(text, size, eclSelect.value, fgColor.value, bgColor.value);
+      qrOutput.style.display = '';
+      downloadBtn.disabled = false;
+      showNotification('二维码已生成');
+    } catch (e) {
+      showNotification('生成失败: ' + e.message, 'error');
+      downloadBtn.disabled = true;
+    }
   }
 
   generateBtn.addEventListener('click', doGenerate);
@@ -74,12 +86,12 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   clearBtn.addEventListener('click', function() {
-    input.value = ''; qrOutput.style.display = 'none';
+    input.value = '';
+    qrOutput.style.display = 'none';
     downloadBtn.disabled = true;
     showNotification('已清空');
   });
 
-  // Generate on Enter in textarea
   input.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); doGenerate(); }
   });

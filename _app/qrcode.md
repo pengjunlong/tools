@@ -7,10 +7,12 @@ sidebar:
   nav: "tools"
 ---
 
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+
 <div id="qrcodeApp">
   <div class="tool-notice">
     <h4><i class="fas fa-info-circle"></i>使用说明</h4>
-    <p>输入文本或 URL，即可生成二维码图片。支持调整大小和颜色。</p>
+    <p>输入文本或 URL，即可生成二维码图片。支持调整大小、颜色和纠错等级。</p>
   </div>
 
   <div class="tool-card">
@@ -27,6 +29,15 @@ sidebar:
           <option value="200">200px</option>
           <option value="256" selected>256px</option>
           <option value="512">512px</option>
+        </select>
+      </label>
+      <label>
+        纠错：
+        <select id="qrEcl" style="padding:4px 8px;border:1px solid #e8e8e8;border-radius:4px;font-size:0.875rem;">
+          <option value="L">L (7%)</option>
+          <option value="M" selected>M (15%)</option>
+          <option value="Q">Q (25%)</option>
+          <option value="H">H (30%)</option>
         </select>
       </label>
       <label>
